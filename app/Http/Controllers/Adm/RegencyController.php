@@ -161,6 +161,11 @@ class RegencyController extends Controller
             $data->where('name', 'like', '%'.$request->search.'%');
         }
 
+        // Apply Filter
+        if($request->has('province') && !empty($request->province)){
+            $data->where('province_id', $request->province);
+        }
+
         // Ordering
         $data->orderBy('name', 'asc');
 
